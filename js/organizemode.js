@@ -1,6 +1,6 @@
 
 function displayOrganizeModeMessage() {
-    if(el('#message-box').classList.contains('visible')) {
+    if (el('#message-box').classList.contains('visible')) {
         hideMessage();
     } else {
         showMessage("Use ⟱ to move a redirect to the bottom, ⟰ to move to the top, and use the checkboxes to select multiple redirects.", true)
@@ -15,7 +15,7 @@ function organizeModeToggle(ev) {
         for (i = 0; i < organizeModeElms.length; ++i) {
             let elm = organizeModeElms[i];
             let isHidden = '';
-            if(mode === '.arrows') {
+            if (mode === '.arrows') {
                 // targeting parent span for arrows
                 elm = elm.parentElement;
             }
