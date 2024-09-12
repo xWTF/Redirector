@@ -127,12 +127,6 @@ function monitorChanges(changes, namespace) {
 			setUpRedirectListener();
 		}
 	}
-
-	if (changes.redirects) {
-		log('Redirects have changed, setting up listener again');
-		setUpRedirectListener();
-	}
-
 	if (changes.logging) {
 		log.enabled = changes.logging.newValue;
 		log('Logging settings have changed to ' + changes.logging.newValue, true); //Always want this to be logged...
@@ -313,7 +307,7 @@ async function saveRedirects(redirects) {
 			log('Finished saving redirects to storage');
 			resolve();
 		}
-	}));
+	})).then(() => setUpRedirectListener());
 }
 
 //Firefox doesn't allow the "content script" which is actually privileged
